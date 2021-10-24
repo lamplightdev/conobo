@@ -58,7 +58,5 @@ export default (env, { head = '', user = null, showMenu = true } = {}) => {
                 : ''}
             `
           : ''}
-      </body>
-    </html>
   `;
 };
