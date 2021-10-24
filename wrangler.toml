@@ -1,0 +1,68 @@
+name = 'conobo-dev'
+account_id=''
+type = 'javascript'
+route = ''
+zone_id = ''
+usage_model = 'bundled'
+compatibility_flags = []
+workers_dev = true
+compatibility_date = '2021-10-13'
+
+[vars]
+ENVIRONMENT = 'development'
+STATIC_URL = 'https://conobo-static.lamplightdev.workers.dev'
+
+[env.staging]
+name = 'conobo-staging'
+
+[env.staging.vars]
+ENVIRONMENT = 'staging'
+STATIC_URL = 'https://conobo-static.lamplightdev.workers.dev'
+
+[env.production]
+name = 'conobo'
+
+[env.production.vars]
+ENVIRONMENT = 'production'
+STATIC_URL = 'https://conobo-static.lamplightdev.workers.dev'
+
+[build]
+
+[build.upload]
+format = 'modules'
+dir = './src'
+main = './worker.js'
+
+[[build.upload.rules]]
+type = 'ESModule'
+globs = ['**/*.js']
+
+[durable_objects]
+bindings = [
+  { name = 'USER', class_name = 'User' },
+  { name = 'BOARD', class_name = 'Board' }
+]
+
+[env.staging.durable_objects]
+bindings = [
+  { name = 'USER', class_name = 'User' },
+  { name = 'BOARD', class_name = 'Board' }
+]
+
+[env.production.durable_objects]
+bindings = [
+  { name = 'USER', class_name = 'User' },
+  { name = 'BOARD', class_name = 'Board' }
+]
+
+[[migrations]]
+tag = 'v0'
+new_classes = ['User', 'Board']
+
+[[env.staging.migrations]]
+tag = 'v0'
+new_classes = ['User', 'Board']
+
+[[env.production.migrations]]
+tag = 'v0'
+new_classes = ['User', 'Board']

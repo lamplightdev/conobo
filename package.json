@@ -1,0 +1,15 @@
+{
+  "name": "clip",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "module": "src/worker.js",
+  "scripts": {
+    "dev": "miniflare --modules --watch --debug"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "miniflare": "^1.4.1"
+  }
+}
